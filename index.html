@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>COLLEY Connect — Ground–Air Herding Control</title>
+  <meta name="description" content="COLLEY 드론 도킹형 보더콜리 로봇 스마트 목축 관제 모바일 앱" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 순수 모바일 앱 화면 (모든 화면 크기에서 전체 화면 모바일 UI로 표시) -->
+  <div class="stage">
+
+    <!-- ===================== 앱 본체 ===================== -->
+    <div class="device" role="application" aria-label="COLLEY Connect 앱">
+
+      <!-- 앱 상단바 -->
+      <header class="appbar">
+        <div class="appbar__brand"><span class="appbar__logo" id="appLogo"></span><span class="appbar__name">COLLEY</span></div>
+        <button class="appbar__bell" id="alertBtn" aria-label="알림">
+          <span id="alertBtnIcon"></span>
+          <span class="appbar__count" id="alertCount">0</span>
+        </button>
+      </header>
+
+      <!-- 앱 화면 (스크롤 영역) -->
+      <main class="screen" id="screen">
+        <section class="view is-active" id="view-home" aria-label="홈"></section>
+        <section class="view" id="view-remote" aria-label="원격"></section>
+        <section class="view" id="view-worklog" aria-label="작업일지"></section>
+        <section class="view" id="view-manage" aria-label="차량관리"></section>
+        <section class="view" id="view-more" aria-label="더보기"></section>
+        <!-- 서브 화면(푸시 네비게이션): 가축/초원/보안/제품/개체상세 등 -->
+        <section class="view view--sub" id="view-sub" aria-label="상세"></section>
+      </main>
+
+      <!-- 하단 탭 바 (대동 커넥트: 홈/원격/작업일지/차량관리/더보기) -->
+      <nav class="tabbar" id="tabbar" aria-label="메인 메뉴"></nav>
+
+      <!-- 알림 시트 (앱 내부 오버레이) -->
+      <div class="sheet-overlay" id="sheetOverlay"></div>
+      <section class="sheet" id="alertSheet" aria-label="알림" aria-hidden="true">
+        <div class="sheet__handle"></div>
+        <div class="sheet__head">
+          <span class="sheet__title">알림센터</span>
+          <button class="linkbtn" id="markAllRead">모두 읽음</button>
+        </div>
+        <div class="chips sheet-chips" id="alertFilters"></div>
+        <div class="sheet__body" id="alertList"></div>
+      </section>
+
+      <!-- 액션 시트/모달 (장치 상세, 팝업) -->
+      <div class="sheet-overlay" id="modalOverlay"></div>
+      <section class="sheet sheet--modal" id="modal" aria-hidden="true">
+        <div class="sheet__handle"></div>
+        <div class="sheet__head">
+          <span class="sheet__title" id="modalTitle">상세</span>
+          <button class="iconbtn" id="modalClose" aria-label="닫기"><span id="modalCloseIcon"></span></button>
+        </div>
+        <div class="sheet__body" id="modalBody"></div>
+      </section>
+
+      <!-- Emergency Simulation 진행 배너 -->
+      <div class="sim-toast" id="simLog" aria-live="polite">
+        <div class="sim-toast__head"><span id="simIcon"></span> 긴급 시뮬레이션</div>
+        <div class="sim-steps" id="simSteps"></div>
+      </div>
+
+      <!-- 토스트 -->
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
